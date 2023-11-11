@@ -1,5 +1,6 @@
 package com.programmers.zigzag.common.advice;
 
+import com.programmers.zigzag.product.exception.ProductNotFoundException;
 import com.programmers.zigzag.product.exception.ProductStockQuantityInvalidException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +13,12 @@ public class ProductControllerAdvice {
     @ExceptionHandler(ProductStockQuantityInvalidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ErrorTemplate handleProductStockQuantityInvalidException(RuntimeException runtimeException) {
+        return ErrorTemplate.of(runtimeException.getMessage());
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    ErrorTemplate handleProductNotFoundException(RuntimeException runtimeException) {
         return ErrorTemplate.of(runtimeException.getMessage());
     }
 }
