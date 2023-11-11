@@ -7,7 +7,8 @@ import java.util.Arrays;
 @Getter
 public enum ProductType {
 
-    BOOK("book");
+    BOOK("book"),
+    CLOTHES("clothes");
 
     private final String value;
 

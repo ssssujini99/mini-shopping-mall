@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductCreateResponse> create(@RequestAttribute Long userId, @RequestBody ProductCreateRequest productCreateRequest) {
+    public ResponseEntity<ProductCreateResponse> create(@RequestAttribute Long userId, final @Valid @RequestBody ProductCreateRequest productCreateRequest) {
         ProductCreateResponse productCreateResponse = productService.createProduct(userId, productCreateRequest);
         return ResponseEntity.ok(productCreateResponse);
     }
