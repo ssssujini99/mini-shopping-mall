@@ -48,4 +48,8 @@ public class OrderProduct extends TimeBaseEntity {
         this.order = order;
     }
 
+    public int calculateTotalCost() {
+        return this.purchasePrice * this.purchaseAmount;
+    }
+
 }
