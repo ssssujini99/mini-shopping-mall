@@ -8,7 +8,7 @@ import com.programmers.zigzag.user.controller.response.UserSignUpResponse;
 import com.programmers.zigzag.user.domain.User;
 import com.programmers.zigzag.user.domain.UserRole;
 import com.programmers.zigzag.user.exception.UserNotFoundException;
-import com.programmers.zigzag.user.repository.UserRepository;
+import com.programmers.zigzag.user.persistence.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

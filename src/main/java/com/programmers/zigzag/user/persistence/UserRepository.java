@@ -1,4 +1,4 @@
-package com.programmers.zigzag.user.repository;
+package com.programmers.zigzag.user.persistence;
 
 import com.programmers.zigzag.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
