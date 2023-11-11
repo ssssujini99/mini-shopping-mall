@@ -16,10 +16,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     private static final String[] JWT_INTERCEPTOR_URLS = {
             "/auth/info",
+            "/product"
     };
 
     private static final String[] AUTH_INTERCEPTOR_URLS = {
-            ""
+            "/product"
     };
 
     @Override
