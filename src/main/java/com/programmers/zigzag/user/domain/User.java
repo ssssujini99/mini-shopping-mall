@@ -13,6 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter
 @Entity
+@Table(name = "user")
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends TimeBaseEntity {
