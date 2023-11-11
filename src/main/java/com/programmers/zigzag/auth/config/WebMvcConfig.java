@@ -16,7 +16,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     private static final String[] JWT_INTERCEPTOR_URLS = {
             "/auth/info",
-            "/product"
+            "/product",
+            "/order",
+            "/order*"
     };
 
     private static final String[] AUTH_INTERCEPTOR_URLS = {
@@ -28,6 +30,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(tokenInterceptor).addPathPatterns(JWT_INTERCEPTOR_URLS);
         registry.addInterceptor(authorityInterceptor).addPathPatterns(AUTH_INTERCEPTOR_URLS);
     }
-
 
 }
