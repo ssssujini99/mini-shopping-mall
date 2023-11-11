@@ -42,7 +42,11 @@ public class Order extends TimeBaseEntity {
         this.orderProducts = orderProducts;
         orderProducts.forEach(it -> it.setOrder(this));
         orderProducts.forEach(it -> it.getProduct().decreaseStockQuantity(it.getPurchaseAmount()));
-        this.orderPrice = orderProducts.stream().mapToInt(it -> it.getPurchasePrice()*it.getPurchaseAmount()).sum();
+        this.orderPrice = getOrderPrice();
         this.userId = userId;
+    }
+
+    public int getOrderPrice() {
+        return this.orderProducts.stream().mapToInt(OrderProduct::calculateTotalCost).sum();
     }
 }
