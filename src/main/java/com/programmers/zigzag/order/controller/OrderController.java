@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/order")
@@ -17,7 +19,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<OrderCreateResponse> create(@RequestAttribute Long userId, @RequestBody OrderCreateRequest orderCreateRequest) {
+    public ResponseEntity<OrderCreateResponse> create(@RequestAttribute Long userId, final @Valid @RequestBody OrderCreateRequest orderCreateRequest) {
         OrderCreateResponse orderCreateResponse = orderService.createOrder(userId, orderCreateRequest);
         return ResponseEntity.ok(orderCreateResponse);
     }
