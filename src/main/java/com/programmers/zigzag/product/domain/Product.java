@@ -1,6 +1,7 @@
 package com.programmers.zigzag.product.domain;
 
 import com.programmers.zigzag.common.domain.TimeBaseEntity;
+import com.programmers.zigzag.product.exception.ProductStockQuantityInvalidException;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import static javax.persistence.GenerationType.*;
 
 @Getter
 @Entity
+@Table(name = "product")
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product extends TimeBaseEntity {
@@ -44,5 +46,12 @@ public class Product extends TimeBaseEntity {
         this.stockQuantity = stockQuantity;
         this.productType = productType;
         this.userId = userId;
+    }
+
+    public void decreaseStockQuantity(int quantity) {
+        if (this.stockQuantity < quantity) {
+            throw new ProductStockQuantityInvalidException();
+        }
+        this.stockQuantity -= quantity;
     }
 }
