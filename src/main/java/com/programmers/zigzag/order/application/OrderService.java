@@ -36,7 +36,7 @@ public class OrderService {
     public OrderCreateResponse createOrder(long userId, OrderCreateRequest orderCreateRequest) {
 
         List<Long> productIdList = getProductIdList(orderCreateRequest);
-        List<Product> productList = productRepository.findAllById(productIdList);
+        List<Product> productList = productRepository.findAllByIdWithPessimisticLock(productIdList);
 
         Map<Long, Product> hashMap = getHashMap(productList);
         List<OrderProduct> orderProductList = getOrderProductList(orderCreateRequest, hashMap);
